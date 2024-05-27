@@ -1,6 +1,13 @@
 import { Stack, Slot, SplashScreen } from "expo-router";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
+import "react-native-url-polyfill/auto";
+import { NativeWindStyleSheet } from "nativewind";
+import GlobalProvider from "@/context/Global";
+
+NativeWindStyleSheet.setOutput({
+  default: "native",
+});
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -34,14 +41,44 @@ export default function RootLayout() {
     return null;
   }
 
+  const screens = [
+    {
+      name: "index",
+      options: {
+        headerShown: false,
+      },
+    },
+    {
+      name: "(auth)",
+      options: {
+        headerShown: false,
+      },
+    },
+    {
+      name: "(tabs)",
+      options: {
+        headerShown: false,
+      },
+    },
+    // {
+    //   name: "/search/[query]",
+    //   options: {
+    //     headerShown: false,
+    //   },
+    // },
+  ];
+
   return (
-    <Stack>
-      <Stack.Screen
-        name="index"
-        options={{
-          headerShown: false,
-        }}
-      />
-    </Stack>
+    <GlobalProvider>
+      <Stack>
+        {screens.map((screen) => (
+          <Stack.Screen
+            key={screen.name}
+            name={screen.name}
+            options={screen.options}
+          />
+        ))}
+      </Stack>
+    </GlobalProvider>
   );
 }
