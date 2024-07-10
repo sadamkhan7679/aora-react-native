@@ -7,6 +7,7 @@ import {
   Query,
   Storage,
 } from "react-native-appwrite";
+import { PostItem } from "@/types/posts";
 
 export const appwriteConfig = {
   endpoint: "https://cloud.appwrite.io/v1",
@@ -236,7 +237,7 @@ export async function getAllPosts() {
       appwriteConfig.videoCollectionId,
     );
 
-    return posts.documents;
+    return posts.documents as PostItem[];
   } catch (error) {
     // @ts-ignore
     throw new Error(error);
