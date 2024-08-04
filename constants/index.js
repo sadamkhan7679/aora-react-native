@@ -1,4 +1,4 @@
-import icons from "./icons";
+import {appIcons} from "./icons";
 import images from "./images";
 
-export { icons, images };
+export { appIcons as icons, images };
