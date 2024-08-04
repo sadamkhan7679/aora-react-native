@@ -60,12 +60,12 @@ export default function RootLayout() {
         headerShown: false,
       },
     },
-    // {
-    //   name: "/search/[query]",
-    //   options: {
-    //     headerShown: false,
-    //   },
-    // },
+    {
+      name: "search/[query]",
+      options: {
+        headerShown: false,
+      },
+    },
   ];
 
   return (

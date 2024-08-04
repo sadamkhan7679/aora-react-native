@@ -5,6 +5,7 @@ import { appIcons } from "@/constants/icons";
 
 type Props = {
   initialQuery?: string;
+  refetch?: () => void;
 };
 
 const SearchInput: React.FC<Props> = ({ initialQuery }) => {
